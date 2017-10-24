@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 #imported stuff
 import turtle,random,types,unicodedata,os,math,time
+import "./Modes/easy.py"
+import "./gui.py"
 #turtle settings
 turtle.speed(0)
 turtle.hideturtle()
@@ -99,13 +101,13 @@ def ship_pos(var):
         mark(sublist,object)
         i+=1
 def only_num(s):
-    a = unicodedata.category(unicode(s))
+    a = unicodedata.category(str(s))
     if a in ("Nd"):
         return True
     else:
         return False
 #narative
-print """
+print ("""
 .______        ___   .___________.___________. __       _______ 
 |   _  \      /   \  |           |           ||  |     |   ____|   
 |  |_)  |    /  ^  \ `---|  |----`---|  |----`|  |     |  |__      
@@ -117,34 +119,34 @@ print """
    |   (----`|  |__|  | |  | |  |_)  | 
     \   \    |   __   | |  | |   ___/  
 .----)   |   |  |  |  | |  | |  |      
-|_______/    |__|  |__| |__| | _|     """
-print "..."
-print "Copyright © 2017 by Aragorn, Yicheng. All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law. For permission requests, write to the publisher, addressed “Attention: Permissions Coordinator,” at the address below."
-print "..."
+|_______/    |__|  |__| |__| | _|     """)
+print ("...")
+print ("Copyright © 2017 by Aragorn, Yicheng. All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law. For permission requests, write to the publisher, addressed “Attention: Permissions Coordinator,” at the address below.")
+print ("...")
 #ask whether you want to play in single or multi
 boolean=True
 while boolean:
-    setting=(str(raw_input("What mode would you like to play in? (Single or Multi): "))).lower().strip()
+    setting=(str(input("What mode would you like to play in? (Single or Multi): "))).lower().strip()
     setting=setting[0]
     if setting=="s" or setting=="m":
         boolean=False
         break
     else:
-        print "..."
-        print "Type Single or Multi to play"
-        print "..."
+        print ("...")
+        print ("Type Single or Multi to play")
+        print ("...")
 #for single player
 if setting=="s":
-    print "..."
+    print ("...")
     #select difficulty
     boolean=True
     while boolean:
-        difficulty=raw_input("Select difficulty: Easy, Normal, Hard, IMPOSSIBRU (Typing only the first letter for the difficulty is enough.)").lower().strip()
+        difficulty=input("Select difficulty: Easy, Normal, Hard, IMPOSSIBRU (Typing only the first letter for the difficulty is enough.)").lower().strip()
         difficulty=difficulty[0]
         if difficulty=="e" or difficulty=="n" or difficulty=="h" or difficulty=="i":
-            print "Difficulty selected:"
+            print ("Difficulty selected:")
             if difficulty=="e":
-                print """
+                print ("""
                     __ooooooooo__
                  oOOOOOOOOOOOOOOOOOOOOOo
              oOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo
@@ -173,9 +175,9 @@ if setting=="s":
 | |__| (_| \__ \ |_| |
 \____/\__,_|___/\__, |
                  __/ |
-                |___/"""
+                |___/""")
             elif difficulty=="n":
-                print """
+                print ("""
 ________________________8888888888888888888________
 ____________________888___________________8888_____
 ________________888_________________________8888___
@@ -205,9 +207,9 @@ ____________8888888888888__________________________
 |  \| | ___  _ __ _ __ ___   __ _| |
 | . ` |/ _ \| '__| '_ ` _ \ / _` | |
 | |\  | (_) | |  | | | | | | (_| | |
-\_| \_/\___/|_|  |_| |_| |_|\__,_|_|"""
+\_| \_/\___/|_|  |_| |_| |_|\__,_|_|""")
             elif difficulty=="h":
-                print """
+                print ("""
 ____________________88888888888 
 _______________88888888888888888888 
 ____________88888888111111111188888888 
@@ -246,9 +248,9 @@ _________________8888888888888888
 | |_| | __ _ _ __ __| |
 |  _  |/ _` | '__/ _` |
 | | | | (_| | | | (_| |
-\_| |_/\__,_|_|  \__,_|"""
+\_| |_/\__,_|_|  \__,_|""")
             else:
-                print """
+                print ("""
 ───────▄██████████████████▄───────
 ────▄███████████████████████▄─────
 ───███████████████████████████────
@@ -282,12 +284,12 @@ _________________8888888888888888
 ──────────────────────────────────
 ▐▌▐█▄█▌▐▀▀█▐▀▀▌─█▀─█▀─▐▌▐▀█▐▀█─█─█
 ▐▌▐─▀─▌▐▀▀▀▐──▌─▀█─▀█─▐▌▐▀▄▐▀▄─█─█
-▐▌▐───▌▐───▐▄▄▌─▄█─▄█─▐▌▐▄█▐─█─█▄█"""
+▐▌▐───▌▐───▐▄▄▌─▄█─▄█─▐▌▐▄█▐─█─█▄█""")
             boolean=False
         else:
-            print "..."
-            print "type e for easy mode, n for normal made, h for hard mode or i for IMPOSSIBRU mode"
-            print "..."
+            print ("...")
+            print ("type e for easy mode, n for normal made, h for hard mode or i for IMPOSSIBREW mode")
+            print ("...")
     #computer putting ships
     for i in ships:
         boolean=True
@@ -332,25 +334,25 @@ _________________8888888888888888
                         player1_red_xy.append([h,v])
                         v+=1
                 player1_ship_xy.append(ship)
-    print "..."
+    print ("...")
     #player putting ships
     turtle.grid()
     for i in range(5):
         boolean=True
         while boolean:
             counter=0 
-            h_v=raw_input("Do you want to place your %s (%s x 1 ship) horizontally or vertically? (H or V): "%(ship_names[i],ships[i])).lower().strip()
+            h_v=input("Do you want to place your %s (%s x 1 ship) horizontally or vertically? (H or V): "%(ship_names[i],ships[i])).lower().strip()
             if h_v=="h" or h_v=="v":
                 boolean=False
             else:
-                print "..."
-                print "Type H for a horizontal boat and V for a vertical boat"
-                print "..."
-        print "..."
+                print ("...")
+                print ("Type H for a horizontal boat and V for a vertical boat")
+                print ("...")
+        print ("...")
         if h_v=="h":
             boolean=True
             while boolean:
-                XY=list(raw_input("Type the top left hand coordinate of the ship. (e.g. A1)").lower().strip())
+                XY=list(input("Type the top left hand coordinate of the ship. (e.g. A1)").lower().strip())
                 if len(XY)==2 and only_num(XY[1]):
                     XY[1]=int(XY[1])-1
                     if XY[0] in alphabet and float(XY[1]).is_integer() and XY[1]<11-ships[i]:
@@ -360,15 +362,15 @@ _________________8888888888888888
                             if sublist[XY[1]+disp]==False:
                                 counter+=1
                 else:
-                    print "..."
-                    print "Try again."
-                    print "..."
+                    print ("...")
+                    print ("Try again.")
+                    print ("...")
                 if counter==ships[i]:
                     boolean=False
         else:
             boolean=True
             while boolean:
-                XY=list(raw_input("Type the top left hand coordinate of the ship. (e.g. A1)").lower().strip())
+                XY=list(input("Type the top left hand coordinate of the ship. (e.g. A1)").lower().strip())
                 if len(XY)==2 and only_num(XY[1]):
                     XY[1]=int(XY[1])-1
                     if XY[0] in alphabet and alphabet.index(XY[0])<11-ships[i]:
@@ -387,12 +389,12 @@ _________________8888888888888888
                             if sublist[XY[1]]==False:
                                 counter+=1
                 else:
-                    print "..."
-                    print "Try again."
-                    print "..."
+                    print ("...")
+                    print ("Try again.")
+                    print ("...")
                 if counter==ships[i]:
                     boolean=False
-        print "..."
+        print ("...")
         if counter==ships[i]:
             boolean=False
             ship=[]
@@ -429,7 +431,7 @@ _________________8888888888888888
             ship_pos(5)
             boolean=True
             while boolean:
-                XY=list(raw_input("Where do you want to hit? (e.g. A1)").lower().strip())
+                XY=list(input("Where do you want to hit? (e.g. A1)").lower().strip())
                 if len(XY)==2 and only_num(XY[1]):
                     XY[1]=int(XY[1])-1
                     if XY[0] in alphabet:
@@ -448,13 +450,13 @@ _________________8888888888888888
                             boolean=False
                             sublist[XY[1]]=True
                 else:
-                    print "..."
-                    print "Try again."
-                    print "..."
+                    print ("...")
+                    print ("Try again.")
+                    print ("...")
             mark(XY,1)
             player1_shoot_xy.append(XY)
             if XY in player1_red_xy:
-                print "hit"
+                print ("hit")
                 mark(XY,0)
                 player1_hit_xy.append(XY)
                 for i in range(len(player1_ship_xy)):
@@ -463,26 +465,19 @@ _________________8888888888888888
                         sublist.remove(XY)
                         if sublist==[]:
                             destroyed=player1_ship_xy.index([])
-                            print "ship sunk"
+                            print ("ship sunk")
                 if player1_ship_xy[destroyed]==[]:
                     player1_ship_xy.remove([])
             else:
-                print "miss"
-            print "..."
+                print ("miss")
+            print ("...")
         else:
             if difficulty=="e":
-                boolean=True
-                while boolean:
-                    h=random.randrange(0,10)
-                    v=random.randrange(0,10)
-                    sublist=player2_hit[h]
-                    if sublist[v]==False:
-                        sublist[v]=True
-                        boolean=False
+                easy()
             elif difficulty=="n":
-                print "n"
+                print ("n")
             elif difficulty=="h":
-                print "h"
+                print ("h")
             else:
                 sublist=player2_red_xy[imposibru_counter]
                 h=sublist[0]
@@ -502,8 +497,8 @@ _________________8888888888888888
         turn=(turn+1)%2
 #for multiplayer
 else:
-    print "Multiplayer is currently unavilable"
-    print """
+    print ("Multiplayer is currently unavilable")
+    print ("""
 
                           oooo$$$$$$$$$$$$oooo
                       oo$$$$$$$$$$$$$$$$$$$$$$$$o
@@ -536,4 +531,4 @@ ______           _            _ _   _       _ _
 | | | |___  __ _| | __      ___| |_| |__    _| |_ 
 | | | / _ \/ _` | | \ \ /\ / / | __| '_ \  | | __|
 | |/ /  __/ (_| | |  \ V  V /| | |_| | | | | | |_ 
-|___/ \___|\__,_|_|   \_/\_/ |_|\__|_| |_| |_|\__|"""
+|___/ \___|\__,_|_|   \_/\_/ |_|\__|_| |_| |_|\__|""")
