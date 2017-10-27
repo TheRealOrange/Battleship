@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Battleship",
+    "\\Battleship\\Core",
+    "\\Battleship\\Modes"
   ],
-  "SelectedNode": "\\main.py",
+  "SelectedNode": "\\Battleship\\main.py",
   "PreviewInSolutionExplorer": false
 }
